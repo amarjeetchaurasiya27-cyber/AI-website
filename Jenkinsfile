@@ -42,15 +42,6 @@ pipeline {
             }
         }
 
-        stage('Stop & Remove Old Container') {
-            steps {
-                bat """
-                docker stop %CONTAINER_NAME% || echo no container
-                docker rm %CONTAINER_NAME% || echo no container
-                """
-            }
-        }
-
         stage('Run Container With Port Binding') {
             steps {
                 bat """
