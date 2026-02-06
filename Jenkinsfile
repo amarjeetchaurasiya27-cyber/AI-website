@@ -6,7 +6,7 @@ pipeline {
         DOCKER_TAG = "01"
         CONTAINER_NAME = "ai-website-container"
         HOST_PORT = "3490"
-        CONTAINER_PORT = "4173"
+        CONTAINER_PORT = "80"
         DOCKER_CREDENTIALS = "dockerhub-creds"
     }
 
