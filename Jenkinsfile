@@ -42,12 +42,14 @@ pipeline {
             }
         }
 
-        stage('Run Container With Port Binding') {
+        stage('Deploy Container') {
             steps {
                 bat """
+                docker rm -f %CONTAINER_NAME% 2>nul
                 docker run -d ^
                 --name %CONTAINER_NAME% ^
                 -p %HOST_PORT%:%CONTAINER_PORT% ^
+                --restart unless-stopped ^
                 %IMAGE_NAME%:%DOCKER_TAG%
                 """
             }
