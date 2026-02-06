@@ -1,4 +1,4 @@
-# ---------- Build Stage ----------
+# -------- Build Stage --------
 FROM node:18-alpine AS build
 
 WORKDIR /app
@@ -10,7 +10,7 @@ COPY . .
 RUN npm run build
 
 
-# ---------- Production Stage ----------
+# -------- Production Stage --------
 FROM node:18-alpine
 
 WORKDIR /app
@@ -19,6 +19,6 @@ RUN npm install -g serve
 
 COPY --from=build /app/dist ./dist
 
-EXPOSE 4173
+EXPOSE 80
 
-CMD ["serve", "-s", "dist", "-l", "4173"]
+CMD ["serve", "-s", "dist", "-l", "80"]
